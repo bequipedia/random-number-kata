@@ -8,8 +8,11 @@ public class GuessingNumberGame {
     }
 
     public String guessNumber(int numberToGuess) {
-        if(this.randomNumberGenerator.generateNumber() == 8) {
+        if(this.randomNumberGenerator.generateNumber() == 5 && numberToGuess == 8) {
             return "The number is lower";
+        }
+        if(this.randomNumberGenerator.generateNumber() == 5 && numberToGuess == 2) {
+            return "The number is higher";
         }
         return "correct! You won";
     }

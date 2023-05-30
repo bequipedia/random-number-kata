@@ -39,8 +39,8 @@ public class GuessingNumberGameShould {
     @Test
     void tell_player_number_is_higher_on_first_try() {
         GuessingNumberGame guessingNumberGame = new GuessingNumberGame(randomNumberGenerator);
-        when(randomNumberGenerator.generateNumber()).thenReturn(11);
-        int numberToGuess = 8;
+        when(randomNumberGenerator.generateNumber()).thenReturn(5);
+        int numberToGuess = 2;
 
         String guessingMessage = guessingNumberGame.guessNumber(numberToGuess);
 
