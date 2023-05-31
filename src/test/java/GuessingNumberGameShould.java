@@ -4,7 +4,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -14,12 +13,12 @@ public class GuessingNumberGameShould {
     RandomNumberGenerator randomNumberGenerator;
 
     @Test
-    void player_wins_on_first_move() {
+    void player_wins_on_first_try() {
         GuessingNumberGame guessingNumberGame = new GuessingNumberGame(randomNumberGenerator);
         when(randomNumberGenerator.generateNumber()).thenReturn(0);
-        int numberToGuess = 0;
+        int firstTryNumber = 0;
 
-        String guessingMessage = guessingNumberGame.guessNumber(numberToGuess);
+        String guessingMessage = guessingNumberGame.guessNumber(firstTryNumber);
 
         assertEquals("correct! You won", guessingMessage);
 
@@ -29,9 +28,20 @@ public class GuessingNumberGameShould {
     void tell_player_number_is_lower_on_first_try() {
         GuessingNumberGame guessingNumberGame = new GuessingNumberGame(randomNumberGenerator);
         when(randomNumberGenerator.generateNumber()).thenReturn(5);
-        int numberToGuess = 8;
+        int firstTryNumber = 8;
 
-        String guessingMessage = guessingNumberGame.guessNumber(numberToGuess);
+        String guessingMessage = guessingNumberGame.guessNumber(firstTryNumber);
+
+        assertEquals("The number is lower", guessingMessage);
+    }
+
+    @Test
+    void tell_player_number_is_lower_on_first_try_v2() {
+        GuessingNumberGame guessingNumberGame = new GuessingNumberGame(randomNumberGenerator);
+        when(randomNumberGenerator.generateNumber()).thenReturn(5);
+        int firstTryNumber = 7;
+
+        String guessingMessage = guessingNumberGame.guessNumber(firstTryNumber);
 
         assertEquals("The number is lower", guessingMessage);
     }
@@ -40,29 +50,19 @@ public class GuessingNumberGameShould {
     void tell_player_number_is_higher_on_first_try() {
         GuessingNumberGame guessingNumberGame = new GuessingNumberGame(randomNumberGenerator);
         when(randomNumberGenerator.generateNumber()).thenReturn(5);
-        int numberToGuess = 2;
+        int firstTryNumber = 2;
 
-        String guessingMessage = guessingNumberGame.guessNumber(numberToGuess);
+        String guessingMessage = guessingNumberGame.guessNumber(firstTryNumber);
 
         assertEquals("The number is higher", guessingMessage);
-    }
-    @Test
-    void tell_player_number_is_lower_on_first_try_v2() {
-        GuessingNumberGame guessingNumberGame = new GuessingNumberGame(randomNumberGenerator);
-        when(randomNumberGenerator.generateNumber()).thenReturn(5);
-        int numberToGuess = 7;
-
-        String guessingMessage = guessingNumberGame.guessNumber(numberToGuess);
-
-        assertEquals("The number is lower", guessingMessage);
     }
     @Test
     void tell_player_number_is_higher_on_first_try_v2() {
         GuessingNumberGame guessingNumberGame = new GuessingNumberGame(randomNumberGenerator);
         when(randomNumberGenerator.generateNumber()).thenReturn(5);
-        int numberToGuess = 3;
+        int firstTryNumber = 3;
 
-        String guessingMessage = guessingNumberGame.guessNumber(numberToGuess);
+        String guessingMessage = guessingNumberGame.guessNumber(firstTryNumber);
 
         assertEquals("The number is higher", guessingMessage);
     }
