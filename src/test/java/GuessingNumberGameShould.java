@@ -56,4 +56,14 @@ public class GuessingNumberGameShould {
 
         assertEquals("The number is lower", guessingMessage);
     }
+    @Test
+    void tell_player_number_is_higher_on_first_try_v2() {
+        GuessingNumberGame guessingNumberGame = new GuessingNumberGame(randomNumberGenerator);
+        when(randomNumberGenerator.generateNumber()).thenReturn(5);
+        int numberToGuess = 3;
+
+        String guessingMessage = guessingNumberGame.guessNumber(numberToGuess);
+
+        assertEquals("The number is higher", guessingMessage);
+    }
 }
