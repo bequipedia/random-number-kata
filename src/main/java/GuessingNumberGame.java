@@ -11,7 +11,7 @@ public class GuessingNumberGame {
         if(this.randomNumberGenerator.generateNumber() < numberToGuess) {
             return "The number is lower";
         }
-        if(this.randomNumberGenerator.generateNumber() == 5 && numberToGuess == 2) {
+        if(this.randomNumberGenerator.generateNumber() > numberToGuess) {
             return "The number is higher";
         }
         return "correct! You won";
