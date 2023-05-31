@@ -8,7 +8,7 @@ public class GuessingNumberGame {
     }
 
     public String guessNumber(int numberToGuess) {
-        if(this.randomNumberGenerator.generateNumber() == 5 && numberToGuess == 8) {
+        if(this.randomNumberGenerator.generateNumber() < numberToGuess) {
             return "The number is lower";
         }
         if(this.randomNumberGenerator.generateNumber() == 5 && numberToGuess == 2) {
