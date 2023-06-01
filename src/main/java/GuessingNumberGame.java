@@ -1,5 +1,6 @@
 public class GuessingNumberGame {
 
+    private int triesCount = 0;
 
     private final RandomNumberGenerator randomNumberGenerator;
 
@@ -8,12 +9,21 @@ public class GuessingNumberGame {
     }
 
     public String guessNumber(int numberToGuess) {
+        triesCount++;
+        String outputMessage = "";
         if(this.randomNumberGenerator.generateNumber() < numberToGuess) {
-            return "The number is lower";
+            outputMessage = "The number is lower";
         }
         if(this.randomNumberGenerator.generateNumber() > numberToGuess) {
-            return "The number is higher";
+            outputMessage = "The number is higher";
         }
-        return "correct! You won";
+        boolean winningCondition = this.randomNumberGenerator.generateNumber() == numberToGuess;
+        if(winningCondition) {
+            outputMessage = "correct! You won";
+        }
+        if(triesCount == 3 && !winningCondition) {
+            outputMessage = "You lose";
+        }
+        return outputMessage;
     }
 }
